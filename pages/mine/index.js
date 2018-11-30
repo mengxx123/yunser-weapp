@@ -1,0 +1,68 @@
+import { pageExtend, commonPage } from '../../utils/page'
+
+const app = getApp()
+
+Page(pageExtend(commonPage, {
+    data: {
+        _title: '我的',
+        _tab: 2,
+
+        motto: 'Hello World',
+        userInfo: {},
+        hasUserInfo: false,
+        canIUse: wx.canIUse('button.open-type.getUserInfo')
+    },
+    //事件处理函数
+    bindViewTap: function () {
+        wx.navigateTo({
+            url: '../logs/logs'
+        })
+    },
+    onLoad() {
+        this._init()
+
+        if (app.globalData.userInfo) {
+            this.setData({
+                userInfo: app.globalData.userInfo,
+                hasUserInfo: true
+            })
+        } else if (this.data.canIUse) {
+            // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+            // 所以此处加入 callback 以防止这种情况
+            app.userInfoReadyCallback = res => {
+                this.setData({
+                    userInfo: res.userInfo,
+                    hasUserInfo: true
+                })
+            }
+        } else {
+            // 在没有 open-type=getUserInfo 版本的兼容处理
+            wx.getUserInfo({
+                success: res => {
+                    app.globalData.userInfo = res.userInfo
+                    this.setData({
+                        userInfo: res.userInfo,
+                        hasUserInfo: true
+                    })
+                }
+            })
+        }
+    },
+    getUserInfo: function (e) {
+        console.log(e)
+        app.globalData.userInfo = e.detail.userInfo
+        this.setData({
+            userInfo: e.detail.userInfo,
+            hasUserInfo: true
+        })
+    },
+    bindgetphonenumber: e => {
+        console.log('手机号回调', e)
+        console.log(e)
+        if (e.detail.errMsg == 'getPhoneNumber:fail user deny') {
+            console.log('用户拒绝了')
+        } else {
+            console.log('用户同意了')
+        }
+    }
+}))

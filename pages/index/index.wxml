@@ -1,0 +1,98 @@
+<!--index.wxml-->
+<view class="page page-home {{ _isIphoneX ? 'iphone-x' : '' }}" bindtap="onPageClick">
+    <include src="../../components/appbar.wxml"/>
+    
+    <view class="time-picker">
+        <view class="item">
+            <view class="header">小时</view>
+            <picker-view class="picker" indicator-style="" value="{{ [hour] }}" bindchange="onHourChange">
+                <picker-view-column>
+                    <view class="text" wx:for="{{ hours }}" wx:key="{{ index }}">{{ item }}</view>
+                </picker-view-column>
+            </picker-view>
+        </view>
+        <view class="item">
+            <view class="header">分钟</view>
+            <picker-view class="picker" indicator-style="" value="{{ [minute] }}" bindchange="onMinuteChange">
+                <picker-view-column>
+                    <view class="text" wx:for="{{ minutes }}" wx:key="{{ index }}">{{ item }}</view>
+                </picker-view-column>
+            </picker-view>
+        </view>
+    </view>
+
+    <view class="section-header">
+        <view class="section-title">缴费金额</view>
+        <view class="op grey" data-url="/pages/pay/desc" bindtap="_navToUrl">
+            预付费 <text class="ui-icon icon-right"></text>
+        </view>
+    </view>
+    <view class="money-box">
+        <text class="money"><text class="symbol">￥</text><text class="number">{{ moneyText }}</text></text>
+        /账号余额10.00元
+    </view>
+
+    <view class="ui-btn" bindtap="ok">确定</view>
+    <!-- <view class="userinfo">
+        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+        <block wx:else>
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        </block>
+    </view>
+    <view class="usermotto">
+        <text class="user-motto">{{motto}}</text>
+    </view>
+    <button class='pop_btn' plain="true"
+        open-type='getPhoneNumber' bindgetphonenumber="bindgetphonenumber">获取用户手机号</button> -->
+    <view class="keyboard-box" wx:if="{{ keyboardVisible }}" catchtap="_nothing">
+        <view class="vehicle-panel">
+            <!-- 数字键盘 -->
+            <block wx:if="{{ keyBoardType === 1 }}">
+                <view class="number-keyboard">
+                    <view class="number-key" hover-class="active" wx:for="{{ numbers }}" wx:key="{{ index }}" data-value="{{ item }}" bindtap="inputNumber">{{ item }}</view>
+                    <view class="number-key key-delete-big" hover-class="active" bindtap="deleteInputNumber">回删</view>
+                    <view class="number-key key-delete-big" hover-class="active" bindtap="clearInputNumber">清空</view>
+                </view>
+            </block>
+            <!--英文键盘  -->
+            <block wx:elif="{{ carNumberIndex > 0 }}">
+                <view class="key-row2">
+                    <view class="keyboard-key2" bindtap='vehicleTap' data-value="{{item}}" wx:for="{{keyNumber}}" wx:for-index="idx" wx:key="item">{{item}}</view>
+                </view>
+                <view class="key-row2">
+                    <view class="keyboard-key2" wx:for="{{keyEnInput1}}" bindtap='vehicleTap' data-value="{{item}}" wx:for-index="idx"  wx:key="idx">{{item}}</view>
+                </view>
+                <view class="key-row2">
+                    <view class="keyboard-key2" wx:for="{{keyEnInput2}}" bindtap='vehicleTap' data-value="{{item}}" wx:for-index="idx" wx:key="idx">{{item}}</view>
+                    <!-- <view hover-class="vehicle-hover" style="border:{{buttonBorder}}" hover-start-time="10" hover-stay-time="100" class='vehicle-panel-row-button vehicle-panel-row-button-img'>
+                        <image src='./delete.svg' class='vehicle-en-button-delete' bindtap='vehicleTap' data-value="delete" mode='aspectFit'>删除</image>
+                    </view> -->
+                </view>
+                <view class="key-row2 key-row-last2">
+                    <view class="keyboard-key2" bindtap='vehicleTap' data-value="{{item}}" wx:for="{{keyEnInput3}}" wx:for-index="idx" wx:key="idx">{{item}}</view>
+                    <view class="keyboard-key2 key-delete" data-value="delete" bindtap="vehicleTap">回删</view>
+                    <!-- <view hover-class="vehicle-hover" style="border:{{buttonBorder}}" hover-start-time="10" hover-stay-time="100" class='vehicle-panel-row-button vehicle-panel-ok' bindtap='vehicleTap' data-value="ok">确定</view> -->
+                </view>
+            </block>
+            <!--省份简写键盘-->
+            <block wx:else>
+                <view class="key-row">
+                    <view class="keyboard-key" wx:for="{{keyVehicle1}}" bindtap='vehicleTap' data-value="{{item}}" wx:for-index="idx" wx:key="idx">{{item}}</view>
+                </view>
+                <view class="key-row">
+                    <view class="keyboard-key" wx:for="{{keyVehicle2}}" bindtap='vehicleTap' data-value="{{item}}" wx:for-index="idx" wx:key="idx">{{item}}</view>
+                </view>
+                <view class="key-row">
+                    <view class="keyboard-key" wx:for="{{keyVehicle3}}" bindtap='vehicleTap' data-value="{{item}}" wx:for-index="idx" wx:key="idx">{{item}}</view>
+                </view>
+                <view class="key-row key-row-last">
+                    <view class="keyboard-key" bindtap='vehicleTap' data-value="{{item}}" wx:for="{{keyVehicle4}}" wx:for-index="idx" wx:key="idx">{{item}}</view>
+                </view>
+            </block>
+        </view>
+        <view class="iphonex-padding"></view>
+    </view>
+
+    <include src="../../components/tabbar.wxml"/>
+</view>

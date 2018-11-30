@@ -1,0 +1,7 @@
+<view class="page">
+    <include src="../../components/appbar.wxml"/>
+
+    <view class="list">
+        <view class="item" wx:for="{{ list }}" data-value="{{ item }}" bindtap="selectItem">{{ item }}</view>
+    </view>
+</view>

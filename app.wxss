@@ -1,0 +1,180 @@
+page {
+    height: 100%;
+}
+text,
+view,
+cover-view,
+navigator {
+    overflow: visible;
+    box-sizing: border-box;
+    font-size: 28rpx;
+}
+
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
+
+
+
+
+
+
+
+/* .page-appbar {
+    height: 100rpx;
+    background-color: #fff;
+} */
+
+
+/* $appbarHeight: 130px;
+
+ */
+ .iphone-x .page-appbar {
+    height: 180rpx;
+}
+.iphone-x .page-appbar .page-appbar-content {
+    top: 100rpx;
+}
+
+.appbar-padding {
+    height: 130rpx;
+}
+.iphone-x .appbar-padding {
+    height: 180rpx;
+}
+.page-appbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000000000000000000;
+    height: 130rpx;
+    /* background-color: #f00; */
+    /* background-color: #fff; */
+    color: #333;
+    border-bottom: 1px solid #eee;
+}
+/* .page-appbar-padding {
+    background-color: #09c;
+    height: $appbarHeight;
+}
+.iphone-x {
+    .page-appbar-padding {
+        height: $appbarHeight + 50px;
+    }
+} */
+
+.page-appbar-content {
+    position: absolute;
+    left: 0;
+    top: 50rpx;
+    height: 68rpx;
+    width: 100%;
+}
+.page-appbar .title {
+    line-height: 68rpx;
+    text-align: center;
+    font-weight: bold;
+}
+.page-appbar .left-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120rpx;
+    height: 68rpx;
+    /* background-color: #09c; */
+}
+.page-appbar .icon-back {
+    position: absolute;
+    top: 18rpx;
+    left: 30rpx;
+    width: 20rpx;
+    height: 36rpx;
+}
+.page-appbar .icon-home {
+    position: absolute;
+    top: 18rpx;
+    left: 30rpx;
+    width: 36rpx;
+    height: 36rpx;
+}
+
+
+
+
+.page-tab {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 98rpx;
+    display: flex;
+    background-color: #fff;
+    border-top: 1px solid #eee;
+}
+.iphone-x .page-tab {
+    height: 160rpx;
+}
+.page-tab .item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 33.333%;
+    padding-top: 8rpx;
+}
+.page-tab .active .text {
+    color: #4285f4;
+}
+.page-tab .icon {
+    display: block;
+    width: 42rpx;
+    height: 46rpx;
+    /* margin-bottom: 4rpx; */
+}
+.page-tab .text {
+    color: #999;
+    font-size: 20rpx;
+}
+
+
+
+.ui-btn {
+    width: 100%;
+    height: 88rpx;
+    color: #fff;
+    background-color: #4285f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30rpx;
+    border-radius: 4px;
+}
+
+
+@font-face {
+    font-family: 'iconfont';  /* project id 939954 */
+    src: url('//at.alicdn.com/t/font_939954_89aepv8yitu.eot');
+    src: url('//at.alicdn.com/t/font_939954_89aepv8yitu.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_939954_89aepv8yitu.woff') format('woff'),
+    url('//at.alicdn.com/t/font_939954_89aepv8yitu.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_939954_89aepv8yitu.svg#iconfont') format('svg');
+}
+
+.ui-icon {
+    font-family:"iconfont" !important;
+    font-size:inherit;
+    font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.ui-icon.icon-right:before { content: "\e69e"; }
+.ui-icon.icon-info:before { content: "\e69c"; }

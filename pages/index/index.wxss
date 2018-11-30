@@ -1,0 +1,221 @@
+.page-home {
+    border-top: 1px solid #eee;
+    padding: 30rpx 24rpx 160rpx 24rpx;
+    background-color: #fdfdfd;
+}
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30rpx;
+}
+.section-header .section-title {
+    color: '#666';
+    font-size: 30rpx;
+}
+.section-header .op {
+    color: #4285f4;
+    font-size: 26rpx;
+}
+.section-header .grey {
+    color: #999;
+}
+.icon-info {
+    margin-right: 10rpx;
+    color: #ffe26c;
+}
+.number-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20rpx;
+}
+.number-list .item {
+    position: relative;
+    flex-shrink: 0;
+    width: 100rpx;
+    height: 100rpx;
+    border-bottom: 1px solid #eee;
+    /* border-radius: 4px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 40rpx;
+}
+.number-list .line {
+    position: absolute;
+    left: 20rpx;
+    bottom: 10rpx;
+    width: 60rpx;
+    height: 4rpx;
+    margin-top: 12rpx;
+    background-color: #fff;
+}
+.number-list .active {
+    border-color: #4285f4;
+    border-width: 2px;
+}
+.number-list .active .line {
+    /* background-color: #4285f4; */
+}
+
+.car-number-list {
+    
+}
+.car-number-list .item {
+    width: 88rpx;
+}
+.car-number-list .line {
+    width: 40rpx;
+}
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #000;
+}
+.tip {
+    margin-bottom: 50rpx;
+    color: #999;
+}
+
+
+.time-picker {
+    width: 100%;
+    height: 218rpx;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50rpx;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+.time-picker .item {
+    width: 340rpx;
+}
+.time-picker .picker {
+    width: 100%;
+    height: 165rpx;
+}
+.time-picker .header {
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: center;
+    font-weight: bold;
+    background-color: #fff;
+    border-bottom: 1px dashed #eee;
+}
+.time-picker .text {
+    text-align: center;
+    /* line-height: 20rpx; */
+    padding-top: 12rpx;
+}
+.money-box {
+    margin-bottom: 56rpx;
+    color: #999;
+}
+.money-box .money {
+    color: #f11515;
+}
+.money-box .number {
+    font-size: 36rpx;
+}
+
+
+
+.keyboard-box {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* top: 0; */
+    /* height: 340px; */
+    z-index: 10000;
+    padding: 24rpx 0;
+    background-color: #e0e3e8;
+    border-top: 1px solid #eee;
+}
+.iphone-x .iphonex-padding {
+    /* background-color: #f00; */
+    width: 100%;
+    height: 60rpx;
+}
+.number-keyboard {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 0 0 24rpx;
+}
+.number-key {
+    flex-shrink: 0;
+    width: 228rpx;
+    height: 48px;
+    margin-right: 12rpx;
+    margin-bottom: 12rpx;
+    /* border: 1px solid #eee; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 4rpx;
+}
+.number-key.active {
+    background-color: #f1f1f1;
+}
+.key-delete-big {
+    /* width: 300rpx; */
+}
+
+.key-row {
+    padding: 0 24rpx;
+    margin-bottom: 12rpx;
+    display: flex;
+    /* justify-content: space-between; */
+}
+.key-row-last {
+    margin-bottom: 0;
+    justify-content: flex-start;
+}
+.keyboard-key {
+    width: 78rpx;
+    height: 120rpx;
+    /* width: 60rpx;
+    height: 90rpx; */
+    margin-right: 12rpx;
+    flex-shrink: 0;
+    background-color: #fff;
+    border-radius: 4rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.key-row-last .keyboard-key {
+    /* margin-right: 10rpx; */
+}
+
+.key-row2 {
+    padding: 0 0 0 24rpx;
+    margin-bottom: 12rpx;
+    display: flex;
+    /* justify-content: space-between; */
+}
+.keyboard-key2 {
+    width: 60rpx;
+    height: 90rpx;
+    margin-right: 12rpx;
+    flex-shrink: 0;
+    /* margin-bottom: 10rpx; */
+    background-color: #fff;
+    border-radius: 4rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.key-row-last2 {
+    justify-content: flex-start;
+    margin-bottom: 0;
+}
+.key-delete {
+    width: 278rpx;
+    background-color: #bbbbbb;
+    color: #fff;
+}

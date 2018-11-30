@@ -1,0 +1,7 @@
+.list {
+
+}
+.list .item {
+    padding: 24rpx;
+    border-bottom: 1px solid #eee;
+}

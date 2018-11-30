@@ -1,0 +1,31 @@
+<!--index.wxml-->
+<view class="page page-debug {{ _isIphoneX ? 'iphone-x' : '' }}">
+    <include src="../../components/appbar.wxml"/>
+
+    <view class="section">
+        <view class="" data-text="{{ code }}" bindtap="_copy">
+            {{ code }}
+        </view>
+        <button bindtap="makeCode">生成 code</button>
+    </view>
+
+    <view class="section">
+        <view class="" data-text="{{ auth }}" bindtap="_copy">
+            {{ auth }}
+        </view>
+        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 用户授权 </button>
+        <button bindtap="makeCode"data-text="{{ authDetail.iv }}" bindtap="_copy">复制 iv</button>
+        <button bindtap="makeCode"data-text="{{ authDetail.encryptedData }}" bindtap="_copy">复制 encryptedData</button>
+        <button bindtap="makeCode"data-text="{{ authDetail.userInfo.nickName }}" bindtap="_copy">复制 用户名</button>
+        <button bindtap="makeCode"data-text="{{ authDetail.userInfo.avatarUrl }}" bindtap="_copy">复制 头像</button>
+    </view>
+
+    <view class="section">
+        <view class="" data-text="{{ phone }}" bindtap="_copy">
+            {{ phone }}
+        </view>
+        <button open-type='getPhoneNumber' bindgetphonenumber="bindgetphonenumber">获取用户手机号</button>
+        <button bindtap="makeCode"data-text="{{ phoneDetail.iv }}" bindtap="_copy">复制 iv</button>
+        <button bindtap="makeCode"data-text="{{ phoneDetail.encryptedData }}" bindtap="_copy">复制 encryptedData</button>
+    </view>
+</view>

@@ -1,0 +1,15 @@
+<cover-view class="appbar-padding"></cover-view>
+<cover-view class="page-appbar" style="background-color: {{ _bgColor }}; color: {{ _textColor }}">
+    <cover-view class="page-appbar-content" style="top: {{ _top }}px">
+        <cover-view class="title">
+            {{ _title }}
+        </cover-view>
+        <cover-view class="left-btn" bindtap="_goHome" wx:if="{{ home }}">
+            <cover-image class="icon-home" src="/static/img/icon_home.png" />
+        </cover-view>
+        <cover-view class="left-btn" bindtap="_goBack" wx:if="{{ _back }}">
+            
+            <cover-image class="icon-back" src="/static/img/icon_back_{{ _theme }}.png" />
+        </cover-view>
+    </cover-view>
+</cover-view>

@@ -1,0 +1,40 @@
+<view class="page-police  {{ _isIphoneX ? 'iphone-x' : '' }}">
+    <include src="../../components/appbar.wxml"/>
+
+    <view class="info-list">
+        <view class="item">
+            <view class="key">车位编号：</view>
+            <view class="value">123234</view>
+        </view>
+        <view class="item">
+            <view class="key">停车时间：</view>
+            <view class="value">2018-12-22 33:00</view>
+        </view>
+        <view class="item">
+            <view class="key">缴费时长：</view>
+            <view class="value">2018-12-22 33:00</view>
+        </view>
+        <view class="item">
+            <view class="key">超时时间：</view>
+            <view class="value">2018-12-22 33:00</view>
+        </view>
+        <view class="item">
+            <view class="key">车位位置：</view>
+            <view class="value">2018-12-22 33:00 2018-12-22 33:002018-12-22 33:00</view>
+        </view>
+    </view>
+
+    <view class="map-box">
+        <map class="map" 
+        id="map"
+        longitude="{{ longitude }}"
+        latitude="{{ latitude }}"
+        scale="{{ scale }}"
+        bindcontroltap="controltap"
+        markers="{{ markers }}"
+        style=""></map>
+    </view>
+
+    <view class="ui-btn" bindtap="openLocation">导航</view>
+
+</view>

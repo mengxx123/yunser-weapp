@@ -1,0 +1,24 @@
+<!-- index.wxml -->
+<view class="container {{ _isIphoneX ? 'iphone-x' : '' }}">
+    <include src="../../components/appbar.wxml"/>
+    
+    <view class="userinfo">
+        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+            获取头像昵称
+        </button>
+        <block wx:else>
+            <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        </block>
+    </view>
+    <view class="" data-url="/pages/debug/index" bindtap="_navToUrl">调试页面</view>
+    <view class="" data-url="/pages/police/index" bindtap="_navToUrl">违停信息</view>
+    <view class="usermotto">
+        <text class="user-motto">{{motto}}</text>
+    </view>
+    <button class='pop_btn' plain="true" open-type='getPhoneNumber' bindgetphonenumber="bindgetphonenumber">
+        获取用户手机号
+    </button>
+
+    <include src="../../components/tabbar.wxml"/>
+</view>

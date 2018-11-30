@@ -1,0 +1,46 @@
+.page-home {
+    border-top: 1px solid #eee;
+    padding: 30rpx 24rpx;
+}
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.section-title {
+    margin-bottom: 30rpx;
+    color: '#666';
+    font-size: 30rpx;
+}
+.number-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20rpx;
+}
+.number-list .item {
+    width: 100rpx;
+    height: 100rpx;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32rpx;
+}
+.tip {
+    margin-bottom: 50rpx;
+    color: #999;
+}
+
+.btn {
+    width: 100%;
+    height: 88rpx;
+    color: #fff;
+    background-color: #4285f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30rpx;
+    border-radius: 4px;
+}

@@ -1,0 +1,5 @@
+<view class="page">
+    <include src="../../components/appbar.wxml"/>
+
+    这是预付费的介绍文字
+</view>

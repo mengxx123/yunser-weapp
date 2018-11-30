@@ -1,0 +1,20 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/auth/index",
+    "pages/mine/index",
+    "pages/scan/index",
+    "pages/debug/index",
+    "pages/log/index",
+    "pages/select/index",
+    "pages/pay/desc",
+    "pages/police/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black",
+    "navigationStyle": "custom"
+  }
+}

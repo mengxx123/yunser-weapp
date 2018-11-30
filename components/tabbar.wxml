@@ -1,0 +1,14 @@
+<view class="page-tab">
+    <view class="item {{ _tab === 0 ? 'active' : '' }}" data-url="/pages/index/index" bindtap="_navToUrl">
+        <image class="icon" src="/static/img/tab_home{{ _tab === 0 ? '_active' : '' }}.png" />
+        <view class="text">我要停车</view>
+    </view>
+    <view class="item {{ _tab === 1 ? 'active' : '' }}" data-url="/pages/log/index" bindtap="_navToUrl">
+        <image class="icon" src="/static/img/tab_log{{ _tab === 1 ? '_active' : '' }}.png" />
+        <view class="text">停车记录</view>
+    </view>
+    <view class="item {{ _tab === 2 ? 'active' : '' }}" data-url="/pages/mine/index" bindtap="_navToUrl">
+        <image class="icon" src="/static/img/tab_mine{{ _tab === 2 ? '_active' : '' }}.png" />
+        <view class="text">我的</view>
+    </view>
+</view>

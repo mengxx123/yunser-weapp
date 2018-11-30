@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<view class="page page-home">
+    <view class="section-header">
+        <view class="section-title">请输入泊车号</view>
+        <view class="">
+            扫码
+        </view>
+    </view>
+    
+</view>

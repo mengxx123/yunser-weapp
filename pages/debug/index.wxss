@@ -1,0 +1,6 @@
+.page-debug {
+    padding: 24rpx;
+}
+.section {
+    margin-bottom: 140rpx;
+}
