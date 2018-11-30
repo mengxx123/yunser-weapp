@@ -176,6 +176,10 @@ Page(pageExtend(commonPage, {
             success: res => {
                 console.log('摄像头数据', res.data)
 
+//                 这个接口中的 package 和 timeStamp 参数是从开发者的第三方服务器返回的，package 是第三方服务器从统一下单接口回复中获得。
+
+// 接口中其他的参数，appId，noceStr，signType 以及 paySign 则由小程序这边存储或者计算而得。
+
                 wx.requestPayment({
                     timeStamp: new Date().getTime() / 1000,
                     'nonceStr': '',
