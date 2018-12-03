@@ -20,5 +20,5 @@
         获取用户手机号
     </button>
 
-    <include src="../../components/tabbar.wxml"/>
+    <!-- <include src="../../components/tabbar.wxml"/> -->
 </view>

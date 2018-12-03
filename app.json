@@ -16,5 +16,31 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle":"black",
     "navigationStyle": "custom"
-  }
+  },
+  "tabBar": {  
+    "color": "#999999",  
+    "selectedColor": "#4285f4",  
+    "borderStyle": "#f00",
+    "backgroundColor": "#fff",
+    "list": [
+      {  
+        "selectedIconPath": "/static/img/tab_home_active.png",  
+        "iconPath": "/static/img/tab_home.png",  
+        "pagePath": "pages/index/index",  
+        "text": "首页"
+      },
+      {  
+        "selectedIconPath": "/static/img/tab_log_active.png",  
+        "iconPath": "/static/img/tab_log.png",  
+        "pagePath": "pages/log/index",  
+        "text": "停车记录"  
+      },
+      {  
+        "selectedIconPath": "/static/img/tab_mine_active.png",  
+        "iconPath": "/static/img/tab_mine.png",  
+        "pagePath": "pages/mine/index",  
+        "text": "我的"
+      }
+    ]  
+  } 
 }

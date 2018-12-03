@@ -20,7 +20,7 @@ for (let i = 0; i < 48; i++) {
 
 Page(pageExtend(commonPage, {
     data: {
-        _title: '我要停车',
+        _title: '云设助手',
         _tab: 0,
 
         parkingNumber: ['', '', '', '', '', ''],
@@ -61,7 +61,8 @@ Page(pageExtend(commonPage, {
         // keyEnInput3: 'ZXCVBNM',
         keyEnInput3: 'UVWXYZ',
 
-        numbers: '1234567890'
+        numbers: '1234567890',
+        copyData: '12124'
     },
     onHourChange(e) {
         this.setData({
@@ -83,6 +84,9 @@ Page(pageExtend(commonPage, {
             moneyText: money.toFixed(2) 
         })
     },
+    test() {
+
+    },
     //事件处理函数
     bindViewTap: function () {
         wx.navigateTo({
@@ -91,8 +95,6 @@ Page(pageExtend(commonPage, {
     },
     onLoad() {
         this._init()
-
-        this.updateMoney() // TODO
 
         if (app.globalData.userInfo) {
             this.setData({
@@ -121,25 +123,40 @@ Page(pageExtend(commonPage, {
             })
         }
 
-        this.login(() => {
-            // 获取用户设置的项目，没有则是第一次登陆
-            app.getProject(project => {
-                if (project) {
-                    this.projectId = project.projectId
-                } else {
-                    console.log('第一次登陆')
-                    // 第一次登陆需要选择项目
-                    this.data.haveToSelectProject = true
-                    wx.navigateTo({
-                        url: '/pages/project/index'
-                    })
-                    return
-                }
-                // this.initProject()
-                this.getGroups()
-                this.requestDictionary()
-            })
+        this.loginDirectly()
+    },
+    loginDirectly() {
+        wx.login({
+            success: res => {
+                console.log('微信登录成功', res.code, app.globalData.infoInfoRes)
+                this.setData({
+                    code: res.code
+                })
+                wx.request({
+                    url: config.apiDomain + '/login/wechat?code=' + res.code,
+                    method: 'POST',
+                    data: {
+                        // code: res.code
+                    },
+                    header: {
+                        'content-type': 'application/json'
+                    },
+                    success: res => {
+                        console.log('登录信息', res.data)
+                        let data = res.data
+                        app.globalData.accessToken = data.accessToken
+                        this.initData()
+                    },
+                    fail: res => {
+                    },
+                    complete: res => {
+                    }
+                })
+            }
         })
+    },
+    initData() {
+        
     },
     onShow() {
         if (app.globalData.selectedCarNumber) {
@@ -149,87 +166,105 @@ Page(pageExtend(commonPage, {
         }
     },
     ok() {
-        // for (let item of this.data.parkingNumber) {
-        //     if (!item) {
-        //         this._error('请输入泊车号')
-        //         return
-        //     }
-        // }
-        // for (let item of this.data.carNumber) {
-        //     if (!item) {
-        //         this._error('请输入车牌号')
-        //         return
-        //     }
-        // }
-        if (this.data.hour === 0 && this.data.minute === 0) {
-            this._error('请输入停车时长')
-            return
-        }
-        console.log('ok')
         wx.request({
-            // url: config.apiDomain + '/rest/auth/camera/detail',
-            url: 'http://localhost:8081/order',
+            url: config.apiDomain + '/donate',
             header: {
                 'cookie': cookie.get(),
                 'content-type': 'application/json'
             },
             success: res => {
                 console.log('摄像头数据', res.data)
-
-//                 这个接口中的 package 和 timeStamp 参数是从开发者的第三方服务器返回的，package 是第三方服务器从统一下单接口回复中获得。
-
-// 接口中其他的参数，appId，noceStr，signType 以及 paySign 则由小程序这边存储或者计算而得。
-
-                wx.requestPayment({
-                    timeStamp: new Date().getTime() / 1000,
-                    'nonceStr': '',
-                    'package': '',
-                    'signType': 'MD5',
-                    'paySign': '',
-                    'success':function(res){},
-                    'fail':function(res){},
-                    'complete':function(res){}
+                let data = res.data
+                this.setData({
+                    copyData: data.package
                 })
-                
-                appid
-:
-"wx087497f569184cff"
-code_url
-:
-"weixin://wxpay/bizpayurl?pr=nOgvxir"
-mch_id
-:
-"1500295462"
-nonce_str
-:
-"z6tyNNjbLMGgpKdV"
-prepay_id
-:
-"wx30161251593212a13c271e6f2411409510"
-result_code
-:
-"SUCCESS"
-return_code
-:
-"SUCCESS"
-return_msg
-:
-"OK"
-sign
-:
-"CFB0957C6B339CE68B74AA3ADC5082E5"
-trade_type
-:
-"NATIVE"
+                wx.requestPayment({
+                    timeStamp: data.timeStamp,
+                    nonceStr: data.nonceStr,
+                    package: data.package,
+                    signType: 'MD5',
+                    paySign: data.paySign,
+                    success: res => {
+                        console.log('success', res)
+                    },
+                    fail: res => {
+                        console.log('fail', res)
+                    },
+                    complete:function(res){}
+                })
             },
             fail: res => {
             },
             complete: res => {
             }
         })
-        
-
-        
+    },
+    send() {
+        wx.request({
+            url: config.apiDomain + '/wechat/send',
+            header: {
+                'cookie': cookie.get(),
+                'content-type': 'application/json'
+            },
+            success: res => {
+                console.log('send 数据', res.data)
+            },
+            fail: res => {
+            },
+            complete: res => {
+            }
+        })
+    },
+    formSubmit(e) {
+        let formId = e.detail.formId
+        console.log(`formSubmit===${formId}===`)
+        // wx.request({
+        //     url: config.apiDomain + '/wechat/send?form_id=' + encodeURIComponent(formId),
+        //     header: {
+        //         'cookie': cookie.get(),
+        //         'content-type': 'application/json'
+        //     },
+        //     success: res => {
+        //         console.log('send 数据', res.data)
+        //     },
+        //     fail: res => {
+        //     },
+        //     complete: res => {
+        //     }
+        // })
+    },
+    formSubmit2(e) {
+        let formId = e.detail.formId
+        console.log(`formSubmit===${formId}===`)
+        wx.request({
+            url: config.apiDomain + '/wechat/send?form_id=' + encodeURIComponent(formId),
+            method: 'POST',
+            data: {
+                formId: this.data.copyData,
+                data: {
+                    keyword1: {
+                        value: "001",
+                        color: "#4a4a4a"
+                    },
+                    keyword2: {
+                        value: "腾讯早餐店",
+                        color: "#9b9b9b"
+                    },
+                },
+                page: '/pages/police/index?id=123',
+            },
+            header: {
+                'cookie': cookie.get(),
+                'content-type': 'application/json'
+            },
+            success: res => {
+                console.log('send 数据', res.data)
+            },
+            fail: res => {
+            },
+            complete: res => {
+            }
+        })
     },
     scan() {
         wx.scanCode({
