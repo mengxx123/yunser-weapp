@@ -1,46 +1,55 @@
 {
-  "pages":[
-    "pages/index/index",
-    "pages/auth/index",
-    "pages/mine/index",
-    "pages/scan/index",
-    "pages/debug/index",
-    "pages/log/index",
-    "pages/select/index",
-    "pages/pay/desc",
-    "pages/police/index"
-  ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black",
-    "navigationStyle": "custom"
-  },
-  "tabBar": {  
-    "color": "#999999",  
-    "selectedColor": "#4285f4",  
-    "borderStyle": "#f00",
-    "backgroundColor": "#fff",
-    "list": [
-      {  
-        "selectedIconPath": "/static/img/tab_home_active.png",  
-        "iconPath": "/static/img/tab_home.png",  
-        "pagePath": "pages/index/index",  
-        "text": "首页"
-      },
-      {  
-        "selectedIconPath": "/static/img/tab_log_active.png",  
-        "iconPath": "/static/img/tab_log.png",  
-        "pagePath": "pages/log/index",  
-        "text": "停车记录"  
-      },
-      {  
-        "selectedIconPath": "/static/img/tab_mine_active.png",  
-        "iconPath": "/static/img/tab_mine.png",  
-        "pagePath": "pages/mine/index",  
-        "text": "我的"
-      }
-    ]  
-  } 
+    "pages": [
+        "pages/index/index",
+        "pages/splash/index",
+        "pages/auth/index",
+        "pages/mine/index",
+        "pages/scan/index",
+        "pages/debug/index",
+        "pages/cart/index",
+        "pages/log/index",
+        "pages/select/index",
+        "pages/pay/desc",
+        "pages/product/detail",
+        "pages/police/index"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "WeChat",
+        "navigationBarTextStyle": "black",
+        "navigationStyle": "custom"
+    },
+    "tabBar": {
+        "color": "#999999",
+        "selectedColor": "#4285f4",
+        "borderStyle": "#f00",
+        "backgroundColor": "#fff",
+        "list": [
+            {
+                "selectedIconPath": "/static/img/tab_home_active.png",
+                "iconPath": "/static/img/tab_home.png",
+                "pagePath": "pages/index/index",
+                "text": "首页"
+            },
+            {
+                "selectedIconPath": "/static/img/tab_type_active.png",
+                "iconPath": "/static/img/tab_type.png",
+                "pagePath": "pages/log/index",
+                "text": "分类"
+            },
+            {
+                "selectedIconPath": "/static/img/tab_cart_active.png",
+                "iconPath": "/static/img/tab_cart.png",
+                "pagePath": "pages/cart/index",
+                "text": "购物车"
+            },
+            {
+                "selectedIconPath": "/static/img/tab_mine_active.png",
+                "iconPath": "/static/img/tab_mine.png",
+                "pagePath": "pages/mine/index",
+                "text": "我的"
+            }
+        ]
+    }
 }

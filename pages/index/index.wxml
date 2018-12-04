@@ -1,22 +1,21 @@
 <view class="page page-home {{ _isIphoneX ? 'iphone-x' : '' }}" bindtap="onPageClick">
     <include src="../../components/appbar.wxml"/>
     
-    <view class="time-picker">
-        <view class="item">
-            <view class="header">小时</view>
-            <picker-view class="picker" indicator-style="" value="{{ [hour] }}" bindchange="onHourChange">
-                <picker-view-column>
-                    <view class="text" wx:for="{{ hours }}" wx:key="{{ index }}">{{ item }}</view>
-                </picker-view-column>
-            </picker-view>
-        </view>
-        <view class="item">
-            <view class="header">分钟</view>
-            <picker-view class="picker" indicator-style="" value="{{ [minute] }}" bindchange="onMinuteChange">
-                <picker-view-column>
-                    <view class="text" wx:for="{{ minutes }}" wx:key="{{ index }}">{{ item }}</view>
-                </picker-view-column>
-            </picker-view>
+    <swiper class="banner" indicator-dots="{{ true }}" autoplay="true" current="{{ curBanner }}" interval="{{ 3000 }}" bindchange="swiperchange">
+        <block wx:for="{{ banners }}" wx:key="{{ index }}">
+            <swiper-item>
+                <image class="img" src="{{ item.url }}"/>
+            </swiper-item>
+        </block>
+    </swiper>
+
+    <view class="product-list">
+        <view class="item" wx:for="{{ products }}" wx:key="{{ index }}" data-url="/pages/product/detail?id={{ item.id }}" bindtap="_navToUrl">
+            <image class="img" src="{{ item.image }}" />
+            <view class="">
+                <view class="name">{{ item.name }}</view>
+                <view class="price">￥{{ item.price }}</view>
+            </view>
         </view>
     </view>
 

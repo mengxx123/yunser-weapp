@@ -8,58 +8,23 @@ import loadingUtil from '../../utils/loading'
 
 const app = getApp()
 
-const minutes = []
-for (let i = 0; i < 60; i += 15) {
-    minutes.push(('' + i).padStart(2, '0'))
-}
-
-const hours = []
-for (let i = 0; i < 48; i++) {
-    hours.push(('' + i).padStart(2, '0'))
-}
-
 Page(pageExtend(commonPage, {
     data: {
         _title: '云设助手',
         _tab: 0,
 
-        parkingNumber: ['', '', '', '', '', ''],
-        parkingNumberIndex: -1,
+        curBanner: 0,
+        banners: [
+            {},
+            {},
+        ],
 
-        carNumber: ['', '', '', '', '', '', ''],
-        carNumberIndex: -1,
-
-        hours,
-        hour: 1,
-        minutes,
-        minute: 0,
-
-        unit: 40.000,
-        money: 0,
-        moneyText: '0.00',
+        products: [],
 
         motto: 'Hello World',
         userInfo: {},
         hasUserInfo: false,
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
-
-        // 键盘
-        keyboardVisible: false,
-        buttonBorder: '1px solid #ccc',
-        backgroundColor: '#fff',
-        //1为省份键盘，其它为英文键盘
-        keyBoardType: 1,
-        keyVehicle1: '陕京津沪冀豫云辽',
-        keyVehicle2: '黑湘皖鲁新苏浙赣',
-        keyVehicle3: '鄂桂甘晋蒙吉闽贵',
-        keyVehicle4: '粤川青藏琼宁渝',
-        keyNumber: '1234567890',
-        // keyEnInput1: 'QWERTYUIOP',
-        keyEnInput1: 'ABCDEFGHIJ',
-        // keyEnInput2: 'ASDFGHJKL',
-        keyEnInput2: 'KLMNOPQRST',
-        // keyEnInput3: 'ZXCVBNM',
-        keyEnInput3: 'UVWXYZ',
 
         numbers: '1234567890',
         copyData: '12124'
@@ -124,6 +89,7 @@ Page(pageExtend(commonPage, {
         }
 
         this.loginDirectly()
+        this.initData()
     },
     loginDirectly() {
         wx.login({
@@ -156,7 +122,24 @@ Page(pageExtend(commonPage, {
         })
     },
     initData() {
-        
+        wx.request({
+            url: config.apiDomain + '/shop/products?page_size=20&page=1',
+            data: {},
+            header: {
+                'content-type': 'application/json'
+            },
+            success: res => {
+                console.log('登录信息', res.data)
+                let data = res.data
+                this.setData({
+                    products: data
+                })
+            },
+            fail: res => {
+            },
+            complete: res => {
+            }
+        })
     },
     onShow() {
         if (app.globalData.selectedCarNumber) {

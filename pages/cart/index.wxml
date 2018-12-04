@@ -1,0 +1,20 @@
+<view class="page-cart {{ _isIphoneX ? 'iphone-x' : '' }}">
+    <include src="../../components/appbar.wxml"/>
+    
+    <view class="cart-list">
+        <view class="item" wx:for="{{ items }}" wx:key="{{ index }}">
+            <image class="img" src="{{ item.product.image }}" />
+            <view>
+                <view class="name">{{ item.product.name }}</view>
+                <view class="price">￥{{ item.product.price }}</view>
+                <view class="number">×{{ item.number }}</view>
+            </view>
+        </view>
+    </view>
+    <view class="page-footer">
+        <view class="total-prce">￥{{ totalPrice }}</view>
+        <view class="btn">结算</view>
+    </view>
+
+    <!-- <include src="../../components/tabbar.wxml"/> -->
+</view>

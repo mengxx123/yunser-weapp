@@ -1,0 +1,4 @@
+<view class="page {{ _isIphoneX ? 'iphone-x' : '' }}">
+    <!-- <include src="../../components/appbar.wxml"/> -->
+    <image class="img" src="/static/img/start.jpg" />
+</view>

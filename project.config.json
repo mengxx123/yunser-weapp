@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 7,
 			"list": [
 				{
 					"id": -1,
@@ -71,7 +71,20 @@
 				{
 					"id": -1,
 					"name": "选择车牌号",
-					"pathName": "pages/select/index"
+					"pathName": "pages/select/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "购物车",
+					"pathName": "pages/cart/index",
+					"query": ""
+				},
+				{
+					"id": 7,
+					"name": "产品详情",
+					"pathName": "pages/product/detail",
+					"query": "id=1"
 				}
 			]
 		}

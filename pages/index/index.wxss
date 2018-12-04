@@ -3,6 +3,28 @@
     padding: 30rpx 24rpx 160rpx 24rpx;
     background-color: #fdfdfd;
 }
+
+.banner {
+
+}
+.banner .img {
+    width: 100%;
+    height: 300rpx;
+}
+
+.product-list {
+
+}
+.product-list .item {
+    margin-bottom: 16rpx;
+    display: flex;
+}
+.product-list .img {
+    width: 160rpx;
+    height: 160rpx;
+    margin-right: 16rpx;
+}
+
 .section-header {
     display: flex;
     justify-content: space-between;

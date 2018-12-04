@@ -1,0 +1,13 @@
+<view class="page-cart {{ _isIphoneX ? 'iphone-x' : '' }}">
+    <include src="../../components/appbar.wxml"/>
+    
+    <view class="detail" wx:if="product">
+        <image class="img" src="{{ product.image }}" />
+        <view class="name">{{ product.name }}</view>
+        <view class="price">￥{{ product.price }}</view>
+        <view class="price">{{ product.description }}</view>
+    </view>
+    <view class="page-footer">
+        <view class="btn">添加到购物车</view>
+    </view>
+</view>

@@ -1,0 +1,41 @@
+page {
+    height: 100%;
+}
+.page-cart {
+    height: 100%;
+    background-color: #f1f1f1;
+}
+.cart-list {
+
+}
+.cart-list .item {
+    display: flex;
+    padding: 24rpx;
+    margin-bottom: 16rpx;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+.cart-list .img {
+    width: 160rpx;
+    height: 160rpx;
+    margin-right: 16rpx;
+}
+.page-footer {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80rpx;
+    background-color: #fff;
+    border-top: 1px solid #eee;
+}
+.page-footer .btn {
+    display: flex;
+    justify-content: center;
+    width: 160rpx;
+    align-items: center;
+    color: #fff;
+    background-color: #f00;
+}
