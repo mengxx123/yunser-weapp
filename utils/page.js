@@ -97,6 +97,12 @@ export const commonPage = {
             url: url
         })
     },
+    _navToTab(e) {
+        let url = e.currentTarget.dataset.url
+        wx.switchTab({
+            url: url
+        })
+    },
     _copy(e) {
         let text = e.currentTarget.dataset.text
         wx.setClipboardData({

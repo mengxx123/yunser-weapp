@@ -1,0 +1,19 @@
+<view class="page page-home {{ _isIphoneX ? 'iphone-x' : '' }}" bindtap="onPageClick">
+    <include src="../../components/appbar.wxml"/>
+    
+    <view class="search-box">
+        <input class="input" placeholder="搜索商品" />
+        <view class="btn ui-icon icon-search" bindtap="search"></view>
+    </view>
+
+
+    <view class="product-list" wx:if="{{ false }}">
+        <view class="item" wx:for="{{ products }}" wx:key="{{ index }}" data-url="/pages/product/detail?id={{ item.id }}" bindtap="_navToUrl">
+            <image class="img" src="{{ item.image }}" />
+            <view class="">
+                <view class="name">{{ item.name }}</view>
+                <view class="price">￥{{ item.price }}</view>
+            </view>
+        </view>
+    </view>
+</view>

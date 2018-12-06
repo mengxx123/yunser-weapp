@@ -9,6 +9,7 @@ page {
 
 }
 .cart-list .item {
+    position: relative;
     display: flex;
     padding: 24rpx;
     margin-bottom: 16rpx;
@@ -20,14 +21,46 @@ page {
     height: 160rpx;
     margin-right: 16rpx;
 }
+.cart-list .name {
+    margin-bottom: 8rpx;
+    font-size: 32rpx;
+}
+
+/**/
+.number-input {
+    position: absolute;
+    right: 24rpx;
+    bottom: 24rpx;
+    height: 56rpx;
+    display: flex;
+    align-items: center;
+    border: 1rpx solid #eee;
+    border-radius: 4rpx;
+}
+.number-input .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 56rpx;
+    height: 56rpx;
+}
+.number-input .number {
+    width: 80rpx;
+    border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    text-align: center;
+}
+/**/
 .page-footer {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding-left: 24rpx;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 80rpx;
+    height: 96rpx;
     background-color: #fff;
     border-top: 1px solid #eee;
 }
@@ -35,7 +68,25 @@ page {
     display: flex;
     justify-content: center;
     width: 160rpx;
+    height: 100%;
     align-items: center;
     color: #fff;
     background-color: #f00;
+}
+.empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 750rpx;
+    padding: 24rpx;
+}
+.empty .img {
+    width: 240rpx;
+    height: 240rpx;
+    margin-bottom: 32rpx;
+}
+.empty .text {
+    margin-bottom: 80rpx;
+    color: #999;
 }

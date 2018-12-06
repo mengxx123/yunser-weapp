@@ -1,19 +1,32 @@
 <view class="page-cart {{ _isIphoneX ? 'iphone-x' : '' }}">
     <include src="../../components/appbar.wxml"/>
     
+    <view class="empty" wx:if="{{ loadingState === 'loaded' && !items.length }}">
+        <image class="img" src="/static/img/cart_empty.png" />
+        <view class="text">购物车为空~</view>
+        <view class="ui-btn" hover-class="active" data-url="/pages/index/index" bindtap="_navToTab">去购物</view>
+    </view>
+    <view class="empty" wx:if="{{ loadingState === 'error' }}">
+        <image class="img" src="/static/img/cart_empty.png" />
+        <view class="text" bindtap="retry">加载失败，点击重试</view>
+    </view>
     <view class="cart-list">
         <view class="item" wx:for="{{ items }}" wx:key="{{ index }}">
             <image class="img" src="{{ item.product.image }}" />
             <view>
                 <view class="name">{{ item.product.name }}</view>
                 <view class="price">￥{{ item.product.price }}</view>
-                <view class="number">×{{ item.number }}</view>
+                <view class="number-input">
+                    <view class="btn" data-id="{{ item.id }}" data-number="{{ item.number }}" bindtap="minus">-</view>
+                    <view class="number">{{ item.number }}</view>
+                    <view class="btn" data-id="{{ item.id }}" data-number="{{ item.number }}" bindtap="add">+</view>
+                </view>
             </view>
         </view>
     </view>
     <view class="page-footer">
         <view class="total-prce">￥{{ totalPrice }}</view>
-        <view class="btn">结算</view>
+        <view class="btn" bindtap="createOrder">结算</view>
     </view>
 
     <!-- <include src="../../components/tabbar.wxml"/> -->

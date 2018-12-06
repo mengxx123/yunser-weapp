@@ -1,6 +1,7 @@
-.page-home {
+.page-donate {
     border-top: 1px solid #eee;
     /* padding: 30rpx 24rpx 160rpx 24rpx; */
+    padding: 24rpx;
     background-color: #fdfdfd;
 }
 

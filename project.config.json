@@ -36,7 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 11,
 			"list": [
 				{
 					"id": -1,
@@ -52,26 +52,8 @@
 				},
 				{
 					"id": -1,
-					"name": "停车记录",
-					"pathName": "pages/log/index",
-					"query": ""
-				},
-				{
-					"id": -1,
 					"name": "我的",
 					"pathName": "pages/mine/index",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "违停信息",
-					"pathName": "pages/police/index",
-					"query": ""
-				},
-				{
-					"id": -1,
-					"name": "选择车牌号",
-					"pathName": "pages/select/index",
 					"query": ""
 				},
 				{
@@ -84,6 +66,48 @@
 					"id": 7,
 					"name": "产品详情",
 					"pathName": "pages/product/detail",
+					"query": "id=1"
+				},
+				{
+					"id": -1,
+					"name": "收货地址",
+					"pathName": "pages/address/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "收货地址编辑",
+					"pathName": "pages/address/edit",
+					"query": "id=1"
+				},
+				{
+					"id": -1,
+					"name": "收货地址添加",
+					"pathName": "pages/address/edit",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "搜索",
+					"pathName": "pages/product/search",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "订单",
+					"pathName": "pages/order/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "捐赠",
+					"pathName": "pages/donate/index",
+					"query": ""
+				},
+				{
+					"id": 11,
+					"name": "订单详情",
+					"pathName": "pages/order/detail",
 					"query": "id=1"
 				}
 			]

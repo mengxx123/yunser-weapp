@@ -1,0 +1,53 @@
+page {
+    height: 100%;
+    background-color: #f1f1f1;
+}
+.page {
+
+}
+.address-list {
+
+}
+.address-list .item {
+    position: relative;
+    padding: 32rpx 24rpx;
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, .12);
+}
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8rpx;
+}
+.name {
+    margin-right: 16rpx;
+    font-size: 32rpx;
+}
+.sex {
+    margin-right: 16rpx;
+}
+.phone {
+    font-size: 32rpx;
+}
+.default {
+    position: absolute;
+    top: 24rpx;
+    right: 24rpx;
+}
+.detail {
+    color: #666;
+}
+.float-btn {
+    position: fixed;
+    bottom: 32rpx;
+    right: 32rpx;
+    width: 112rpx;
+    height: 112rpx;
+    color: #fff;
+    background-color: #ff4081;
+    border-radius: 50%;
+    font-size: 48rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

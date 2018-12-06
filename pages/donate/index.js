@@ -10,87 +10,12 @@ const app = getApp()
 
 Page(pageExtend(commonPage, {
     data: {
-        _title: '云设助手',
-        _tab: 0,
-
-        curBanner: 0,
-        banners: [
-            {
-                image: 'https://img1.yunser.com/avatar/avatar_1.jpg'
-            },
-            {
-                image: 'https://img1.yunser.com/avatar/avatar_2.jpg'
-            },
-        ],
-
-        products: [],
-
-        motto: 'Hello World',
-        userInfo: {},
-        hasUserInfo: false,
-        canIUse: wx.canIUse('button.open-type.getUserInfo'),
-
-        numbers: '1234567890',
-        copyData: '12124'
-    },
-    onHourChange(e) {
-        this.setData({
-            hour: e.detail.value[0],
-        })
-        this.updateMoney()
-    },
-    onMinuteChange(e) {
-        this.setData({
-            minute: e.detail.value[0],
-        })
-        this.updateMoney()
-    },
-    updateMoney() {
-        console.log('this.hour, this.minute', this.data.hour, this.data.minute)
-        let money = this.data.unit * (this.data.hour + this.data.minute * 15 / 60)
-        this.setData({
-            money,
-            moneyText: money.toFixed(2) 
-        })
-    },
-    test() {
-
-    },
-    //事件处理函数
-    bindViewTap: function () {
-        wx.navigateTo({
-            url: '../logs/logs'
-        })
+        _title: '捐赠',
+        _back: true,
     },
     onLoad() {
         this._init()
 
-        if (app.globalData.userInfo) {
-            this.setData({
-                userInfo: app.globalData.userInfo,
-                hasUserInfo: true
-            })
-        } else if (this.data.canIUse) {
-            // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-            // 所以此处加入 callback 以防止这种情况
-            app.userInfoReadyCallback = res => {
-                this.setData({
-                    userInfo: res.userInfo,
-                    hasUserInfo: true
-                })
-            }
-        } else {
-            // 在没有 open-type=getUserInfo 版本的兼容处理
-            wx.getUserInfo({
-                success: res => {
-                    app.globalData.userInfo = res.userInfo
-                    this.setData({
-                        userInfo: res.userInfo,
-                        hasUserInfo: true
-                    })
-                }
-            })
-        }
 
         this.loginDirectly()
         this.initData()
@@ -199,78 +124,6 @@ Page(pageExtend(commonPage, {
             fail: res => {
             },
             complete: res => {
-            }
-        })
-    },
-    formSubmit(e) {
-        let formId = e.detail.formId
-        console.log(`formSubmit===${formId}===`)
-        // wx.request({
-        //     url: config.apiDomain + '/wechat/send?form_id=' + encodeURIComponent(formId),
-        //     header: {
-        //         'cookie': cookie.get(),
-        //         'content-type': 'application/json'
-        //     },
-        //     success: res => {
-        //         console.log('send 数据', res.data)
-        //     },
-        //     fail: res => {
-        //     },
-        //     complete: res => {
-        //     }
-        // })
-    },
-    formSubmit2(e) {
-        let formId = e.detail.formId
-        console.log(`formSubmit===${formId}===`)
-        wx.request({
-            url: config.apiDomain + '/wechat/send?form_id=' + encodeURIComponent(formId),
-            method: 'POST',
-            data: {
-                formId: this.data.copyData,
-                data: {
-                    keyword1: {
-                        value: "001",
-                        color: "#4a4a4a"
-                    },
-                    keyword2: {
-                        value: "腾讯早餐店",
-                        color: "#9b9b9b"
-                    },
-                },
-                page: '/pages/police/index?id=123',
-            },
-            header: {
-                'cookie': cookie.get(),
-                'content-type': 'application/json'
-            },
-            success: res => {
-                console.log('send 数据', res.data)
-            },
-            fail: res => {
-            },
-            complete: res => {
-            }
-        })
-    },
-    scan() {
-        wx.scanCode({
-            success: res => {
-                console.log('扫码结果')
-                console.log(res)
-                if (!res.errMsg.includes('ok')) {
-                    this._error('扫码失败')
-                    return
-                }
-                let parkingNumber = this.data.parkingNumber
-                let arr = res.result.split('')
-                for (let i = 0; i < arr.length; i++) {
-                    parkingNumber[i] = arr[i]
-                }
-                this.setData({
-                    parkingNumber
-                    // parkingNumber: res.result.split('')
-                })
             }
         })
     },

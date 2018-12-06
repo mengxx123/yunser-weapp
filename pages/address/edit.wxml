@@ -1,0 +1,34 @@
+<view class="page {{ _isIphoneX ? 'iphone-x' : '' }}">
+    <include src="../../components/appbar.wxml"/>
+    
+    <view class="form">
+        <view class="form-item">
+            <view class="label">收货人</view>
+            <input class="input" value="{{ address.receiverName }}" placeholder="请输入收货人姓名" />
+        </view>
+        <view class="form-item">
+            <radio-group class="radio-group" bindchange="radioChange">
+                <label class="radio">
+                    <radio value="{{ address.receiverSex }}" checked="{{ address.receiverSex === 1 }}" />先生
+                    <radio value="{{ address.receiverSex }}" checked="{{ address.receiverSex === 2 }}" />女士
+                </label>
+            </radio-group>
+        </view>
+        <view class="form-item">
+            <view class="label">联系电话</view>
+            <input class="input" value="{{ address.receiverPhone }}" placeholder="请输入收货人电话" />
+        </view>
+        <view class="form-item">
+            <view class="label">联系地址</view>
+            <input class="input" value="{{ address.detail }}" placeholder="请输入收货人地址" />
+        </view>
+        <view class="form-item">
+            <checkbox value="{{ address.isDefault }}" checked="{{ address.isDefault === 1 }}"/>
+            设为默认
+        </view>
+    </view>
+
+    <!-- <view class="btn" hover-class="active" bindtap="save">保存</view> -->
+
+    <view class="btn btn-bottom" hover-class="active" bindtap="save">保存</view>
+</view>

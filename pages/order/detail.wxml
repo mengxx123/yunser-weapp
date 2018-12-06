@@ -1,0 +1,40 @@
+<view class="page page-order {{ _isIphoneX ? 'iphone-x' : '' }}">
+    <include src="../../components/appbar.wxml"/>
+
+    <view class="detail" wx:if="{{ order }}">
+        <view class="meta-list">
+            <view class="item">
+                <view class="name">订单编号：</view>
+                <view class="value" data-text="{{ order.code }}" bindtap="_copy">{{ order.code }}</view>
+            </view>
+            <view class="item">
+                <view class="name">创建时间：</view>
+                <view class="value">{{ order.createTime }}</view>
+            </view>
+            <view class="item">
+                <view class="name">订单状态：</view>
+                <view class="value">{{ order.statusText }}</view>
+            </view>
+            <view class="item">
+                <view class="name">运费：</view>
+                <view class="value">￥{{ order.deliveryMoney }}</view>
+            </view>
+        </view>
+        <view class="item-list">
+            <view class="item" wx:for="{{ order.items }}" wx:key="{{ index }}">
+                <view class="img"></view>
+                <view>
+                    <view class="product-name">{{ item.productName }}</view>
+                    <view class="spec">{{ item.productSpec }}</view>
+                    <view class="number">{{ item.number }}</view>
+                    <view class="price">￥{{ item.price }}</view>
+                </view>
+            </view>
+        </view>
+        <view class="total-money">￥{{ order.totalMoney }}</view>
+        
+    </view>
+    <!-- <view class="empty" wx:if="{{ !orders.length }}">
+        <view class="text">暂无订单~</view>
+    </view> -->
+</view>

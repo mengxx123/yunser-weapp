@@ -1,0 +1,18 @@
+<view class="page page-order {{ _isIphoneX ? 'iphone-x' : '' }}">
+    <include src="../../components/appbar.wxml"/>
+    <view class="tab-list">
+        <view class="item {{ curTab === index ? 'active' : 'no' }}" wx:for="{{ tabs }}" data-index="{{ index }}" bindtap="switchTab">
+            <view class="text">{{ item.text }}</view>
+        </view>
+    </view>
+    <view class="order-list">
+        <view class="item" wx:for="{{ orders }}" wx:key="{{ index }}" data-url="/pages/order/detail?id={{ item.id }}" bindtap="_navToUrl">
+            <view>订单编号：{{ item.code }}</view>
+            <view>订单总价：{{ item.totalMoney }}</view>
+            <view>订单状态：{{ item.statusText }}</view>
+        </view>
+    </view>
+    <view class="empty" wx:if="{{ !orders.length }}">
+        <view class="text">暂无订单~</view>
+    </view>
+</view>

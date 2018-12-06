@@ -1,0 +1,10 @@
+<view class="page page-donate {{ _isIphoneX ? 'iphone-x' : '' }}" bindtap="onPageClick">
+    <include src="../../components/appbar.wxml"/>
+    
+    <view class="money-box">
+        项目不易，感谢捐赠
+    </view>
+
+    <view class="ui-btn" bindtap="ok">给我捐赠1分钱</view>
+    <!-- <view data-text="{{ copyData }}" bindtap="_copy">{{ copyData }}</view> -->
+</view>

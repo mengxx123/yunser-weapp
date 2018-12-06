@@ -6,11 +6,24 @@
         "pages/mine/index",
         "pages/scan/index",
         "pages/debug/index",
-        "pages/cart/index",
-        "pages/log/index",
         "pages/select/index",
         "pages/pay/desc",
+        
+        "pages/cart/index",
+        "pages/shop/detail",
+        "pages/type/index",
+
+        "pages/order/index",
+        "pages/order/detail",
+        
+        "pages/donate/index",
+        
         "pages/product/detail",
+        "pages/product/search",
+
+        "pages/address/index",
+        "pages/address/edit",
+
         "pages/police/index"
     ],
     "window": {
@@ -35,7 +48,7 @@
             {
                 "selectedIconPath": "/static/img/tab_type_active.png",
                 "iconPath": "/static/img/tab_type.png",
-                "pagePath": "pages/log/index",
+                "pagePath": "pages/type/index",
                 "text": "分类"
             },
             {

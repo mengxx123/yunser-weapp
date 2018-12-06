@@ -1,0 +1,16 @@
+<view class="page {{ _isIphoneX ? 'iphone-x' : '' }}">
+    <include src="../../components/appbar.wxml"/>
+    
+    <view class="address-list">
+        <view class="item" wx:for="{{ addresses }}" wx:key="{{ index }}" data-url="/pages/address/edit?id={{ item.id }}" bindtap="_navToUrl">
+            <view class="header">
+                <view class="name">{{ item.receiverName }}</view>
+                <view class="sex">{{ item.receiverSex === 1 ? '先生' : '女士' }}</view>
+                <view class="phone">{{ item.receiverPhone }}</view>
+            </view>
+            <view class="detail">{{ item.detail }}</view>
+            <view class="default" wx:if="{{ item.isDefault }}">默认地址</view>
+        </view>
+    </view>
+    <view class="float-btn" data-url="/pages/address/edit" bindtap="_navToUrl">+</view>
+</view>

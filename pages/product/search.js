@@ -10,7 +10,7 @@ const app = getApp()
 
 Page(pageExtend(commonPage, {
     data: {
-        _title: '云设助手',
+        _title: '搜索',
         _tab: 0,
 
         curBanner: 0,

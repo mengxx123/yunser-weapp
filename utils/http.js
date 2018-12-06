@@ -23,7 +23,8 @@ export default {
             'cookie': cookie.get(),
         }
         if (method === 'POST') {
-            header['content-type'] = 'application/x-www-form-urlencoded'
+            // header['content-type'] = 'application/x-www-form-urlencoded'
+            header['content-type'] = 'application/json'
         }
         return new Promise((resolve, reject) => {
             console.info('request ' + url)
@@ -34,13 +35,14 @@ export default {
                 header: header,
                 success: res => {
                     console.log(res.data)
-                    if (res.data.httpCode !== 200) {
-                        reject(res)
-                        return
-                    }
+                    // TODO
+                    // if (res.data.httpCode !== 200) {
+                    //     reject(res)
+                    //     return
+                    // }
                     resolve(res)
                 },
-                fail() {
+                fail(res) {
                     reject(res)
                 },
                 complete: res => {

@@ -12,6 +12,8 @@ Page(pageExtend(commonPage, {
         items: [],
         totalPrice: 0.00,
 
+        loadingState: '',
+
         motto: 'Hello World',
         userInfo: {},
         hasUserInfo: false,
@@ -25,43 +27,14 @@ Page(pageExtend(commonPage, {
     },
     onLoad() {
         this._init()
-
-        if (app.globalData.userInfo) {
-            this.setData({
-                userInfo: app.globalData.userInfo,
-                hasUserInfo: true
-            })
-        } else if (this.data.canIUse) {
-            // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-            // 所以此处加入 callback 以防止这种情况
-            app.userInfoReadyCallback = res => {
-                this.setData({
-                    userInfo: res.userInfo,
-                    hasUserInfo: true
-                })
-            }
-        } else {
-            // 在没有 open-type=getUserInfo 版本的兼容处理
-            wx.getUserInfo({
-                success: res => {
-                    app.globalData.userInfo = res.userInfo
-                    this.setData({
-                        userInfo: res.userInfo,
-                        hasUserInfo: true
-                    })
-                }
-            })
-        }
-
-        wx.request({
-            url: config.apiDomain + '/shop/users/1/cart_items', // TODO
-            data: {
-            },
-            header: {
-                'cookie': cookie.get(),
-                'content-type': 'application/json'
-            },
-            success: res => {
+        this.initData()
+    },
+    initData() {
+        this.setData({
+            loadingState: 'loading',
+        })
+        app.http.get(`/shop/users/${app.globalData.user.id}/cart_items`)
+            .then(res => {
                 console.log('send 数据', res.data)
                 // 数据处理
                 let items = res.data.map(item => {
@@ -78,22 +51,85 @@ Page(pageExtend(commonPage, {
                 
                 console.log('totalPrice', totalPrice)
                 this.setData({
+                    loadingState: 'loaded',
                     items,
                     totalPrice
                 })
-            },
-            fail: res => {
-            },
-            complete: res => {
-            }
-        })
+            }, res => {
+                this.setData({
+                    loadingState: 'error',
+                })
+            })
     },
-    getUserInfo: function (e) {
-        console.log(e)
-        app.globalData.userInfo = e.detail.userInfo
-        this.setData({
-            userInfo: e.detail.userInfo,
-            hasUserInfo: true
-        })
+    retry() {
+        this.initData()
     },
+    createOrder() {
+        app.http.post('/shop/orders', {
+            userId: 1,
+            // productId: this.productId
+        })
+            .then(res => {
+                // console.log('send 数据', res.data)
+                // this.setData({
+                //     product: res.data,
+                // })
+                this._success('创建成功')
+            }, res => {
+                wx.showToast({
+                    title: '获取工单详情失败',
+                    icon: 'none',
+                    duration: 1000
+                })
+            })
+    },
+    minus(e) {
+        let id = e.currentTarget.dataset.id
+        let number = e.currentTarget.dataset.number
+        if (number === 1) {
+            this._info('再减就没了')
+            return
+        }
+        app.http.post('/shop/cart_items', {
+            number: -1,
+            productId: id // TODO
+        })
+            .then(res => {
+                // console.log('send 数据', res.data)
+                // this.setData({
+                //     product: res.data,
+                // })
+                // this._success('添加成功')
+                this.initData()
+
+            }, res => {
+                wx.showToast({
+                    title: '获取工单详情失败',
+                    icon: 'none',
+                    duration: 1000
+                })
+            })
+    },
+    add(e) {
+        let id = e.currentTarget.dataset.id
+        app.http.post('/shop/cart_items', {
+            number: 1,
+            productId: id // TODO
+        })
+            .then(res => {
+                // console.log('send 数据', res.data)
+                // this.setData({
+                //     product: res.data,
+                // })
+                // this._success('添加成功')
+                this.initData()
+
+            }, res => {
+                wx.showToast({
+                    title: '获取工单详情失败',
+                    icon: 'none',
+                    duration: 1000
+                })
+            })
+    }
 }))

@@ -33,3 +33,14 @@ page {
     color: #fff;
     background-color: #f00;
 }
+
+.sku-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+.sku-list .item {
+    padding: 8rpx 16rpx;
+    margin-bottom: 24rpx;
+    border: 1px solid #f00;
+    border-radius: 4rpx;
+}

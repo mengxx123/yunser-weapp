@@ -6,8 +6,15 @@
         <view class="name">{{ product.name }}</view>
         <view class="price">￥{{ product.price }}</view>
         <view class="price">{{ product.description }}</view>
+
+        <view class="sku-list">
+            <view class="item" wx:for="{{ skus }}">
+                {{ item.spec }}
+            </view>
+        </view>
     </view>
     <view class="page-footer">
-        <view class="btn">添加到购物车</view>
+        <view></view>
+        <view class="btn" bindtap="addToCart">添加到购物车</view>
     </view>
 </view>

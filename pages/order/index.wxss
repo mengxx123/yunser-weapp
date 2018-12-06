@@ -1,0 +1,61 @@
+page {
+    height: 100%;
+}
+.page-order {
+    height: 100%;
+    border-top: 1px solid #eee;
+    /* padding: 30rpx 24rpx 160rpx 24rpx; */
+    background-color: #f1f1f1;
+}
+
+.tab-list {
+    position: fixed;
+    top: 130rpx;
+    left: 0;
+    right: 0;
+    z-index: 10000;
+    background-color: #fdfdfd;
+    border-bottom: 4rpx solid #eee;
+    /* border-bottom: 1px solid rgba(0, 0, 0, .12); */
+    display: flex;
+}
+.iphone-x .tab-list {
+    top: 180rpx;
+}
+.tab-list .item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 96rpx;
+}
+.tab-list .text {
+    width: 100%;
+    line-height: 96rpx;
+    font-size: 30rpx;
+    text-align: center;
+    border-bottom: 2px solid #fdfdfd;
+}
+.tab-list .active .text {
+    color: #4285f4;
+    border-color: #4285f4;
+}
+
+.order-list {
+    padding-top: 96rpx;
+}
+.order-list .item {
+    margin-bottom: 16rpx;
+    padding: 24rpx;
+    background-color: #fff;
+}
+
+.empty {
+    height: 750rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.empty .text {
+    color: #999;
+}

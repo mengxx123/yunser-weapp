@@ -1,4 +1,13 @@
+import http from './utils/http'
+
 App({
+    http,
+    globalData: {
+        user: {
+            id: '1'
+        },
+        userInfo: null
+    },
     onLaunch() {
         // 展示本地存储能力
         var logs = wx.getStorageSync('logs') || []
@@ -37,7 +46,5 @@ App({
             }
         })
     },
-    globalData: {
-        userInfo: null
-    }
+    
 })
