@@ -29,5 +29,6 @@
         <view class="btn" bindtap="createOrder">结算</view>
     </view>
 
+    
     <!-- <include src="../../components/tabbar.wxml"/> -->
 </view>

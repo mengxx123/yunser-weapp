@@ -1,20 +1,44 @@
-<view class="page-cart {{ _isIphoneX ? 'iphone-x' : '' }}">
+<view class="page-detail {{ _isIphoneX ? 'iphone-x' : '' }}">
     <include src="../../components/appbar.wxml"/>
     
+    <swiper class="banner" indicator-dots="{{ true }}" autoplay="true" interval="{{ 3000 }}" bindchange="swiperchange">
+        <block wx:for="{{ images }}" wx:key="{{ index }}">
+            <swiper-item class="item">
+                <image class="img" src="{{ item }}" data-index="{{ index }}" bindtap="previewImage"/>
+            </swiper-item>
+        </block>
+    </swiper>
     <view class="detail" wx:if="product">
-        <image class="img" src="{{ product.image }}" />
         <view class="name">{{ product.name }}</view>
-        <view class="price">￥{{ product.price }}</view>
-        <view class="price">{{ product.description }}</view>
-
-        <view class="sku-list">
-            <view class="item" wx:for="{{ skus }}">
-                {{ item.spec }}
-            </view>
+        <view class="price">
+            ￥
+            <text class="value">{{ product.price }}</text>
         </view>
+
+        <view class="desc">{{ product.description }}</view>
+
+        
     </view>
     <view class="page-footer">
         <view></view>
         <view class="btn" bindtap="addToCart">添加到购物车</view>
+    </view>
+    <view class="sku-box">
+        <view class="header">
+            <image class="img" src="{{ product.image }}" />
+            <view class="price">
+                ￥
+                <text class="value">{{ product.price }}</text>
+            </view>
+            <view class="store">库存：{{ 123}} 箱子</view>
+        </view>
+        <view class="body">
+            <view class="sku-list">
+                <view class="item {{ curSkuIndex === index ? 'active' : ''}}" wx:for="{{ skus }}">
+                    {{ item.spec }}
+                </view>
+            </view>
+            <view class="btn btn-bottom" hover-class="active" bindtap="save">确认</view>
+        </view>
     </view>
 </view>

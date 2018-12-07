@@ -1,0 +1,5 @@
+.page-about {
+    border-top: 1px solid #eee;
+    /* padding: 30rpx 24rpx 160rpx 24rpx; */
+    background-color: #fdfdfd;
+}

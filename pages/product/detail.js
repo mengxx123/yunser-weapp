@@ -8,7 +8,11 @@ Page(pageExtend(commonPage, {
         _back: true,
         
         product: null,
-        skus: []
+        images: [],
+
+        skus: [],
+        curSku: {},
+        curSkuIndex: 0
     },
     onLoad(options) {
         this._init()
@@ -19,8 +23,10 @@ Page(pageExtend(commonPage, {
         app.http.get(`/shop/products/${this.productId}`)
             .then(res => {
                 console.log('send 数据', res.data)
+                let product = res.data
                 this.setData({
-                    product: res.data,
+                    product,
+                    images: [product.image, product.image]
                 })
             }, res => {
                 wx.showToast({
@@ -32,8 +38,10 @@ Page(pageExtend(commonPage, {
         app.http.get(`/shop/products/${this.productId}/skus`)
             .then(res => {
                 console.log('send 数据', res.data)
+                let skus = res.data
                 this.setData({
-                    skus: res.data,
+                    skus,
+                    curSku: skus[0]
                 })
             }, res => {
                 wx.showToast({
@@ -61,5 +69,12 @@ Page(pageExtend(commonPage, {
                     duration: 1000
                 })
             })
+    },
+    previewImage() {
+        let index = e.currentTarget.dataset.index
+        wx.previewImage({
+            current: index,
+            urls: this.data.images
+        })
     }
 }))

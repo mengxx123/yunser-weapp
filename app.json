@@ -17,6 +17,7 @@
         "pages/order/detail",
         
         "pages/donate/index",
+        "pages/about/index",
         
         "pages/product/detail",
         "pages/product/search",

@@ -11,7 +11,7 @@ const app = getApp()
 Page(pageExtend(commonPage, {
     data: {
         _title: '搜索',
-        _tab: 0,
+        _back: 0,
 
         curBanner: 0,
         banners: [
